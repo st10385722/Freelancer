@@ -1,0 +1,25 @@
+﻿@model FreelancerJerry.Models.Customer
+
+<h2>Login</h2>
+<form asp-action="Login" method="post">
+    @Html.AntiForgeryToken()
+        <label asp-for="Email" class="control-label col-md-2"></label>
+        <div class="col-md-10">
+            <input class="form-control" asp-for="Email" required/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <label asp-for="Password" class="control-label col-md-2"></label>
+        <div class="col-md-10">
+            <input class="form-control" asp-for="Password" required/>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <br/>
+    <button type="submit" class="btn">Login</button>
+</form>
+<br/>
+    <p style="color: red;">
+       @{
+            @ViewData["LoginError"];
+        }
+    </p>

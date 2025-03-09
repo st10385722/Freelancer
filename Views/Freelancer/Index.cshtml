@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FreelancerJerry.Models.Freelancer>
+
+<h2>Index</h2>
+<p>
+    <a asp-action="AddFreelancer" class="btn btn-primary">Add Freelancer</a>
+</p>
+<!--For the ienummberable classes, we will need to use html instead of label -->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+    @foreach(var item in Model){
+        <tr>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.PhoneNumber
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                <a asp-action="EditFreelancer" asp-route-FreelancerId="@item.FreelancerId" class="btn btn-secondary">Edit</a> |
+                <a asp-action="DeleteFreelancer" asp-route-FreelancerId="@item.FreelancerId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
