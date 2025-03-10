@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Niel\\source\\vsc\\FreelancerJerry\\FreelancerJerry.csproj": {}
+    "C:\\Users\\Niel\\source\\vsc\\Freelancer\\FreelancerJerry.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Niel\\source\\vsc\\FreelancerJerry\\FreelancerJerry.csproj": {
+    "C:\\Users\\Niel\\source\\vsc\\Freelancer\\FreelancerJerry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Niel\\source\\vsc\\FreelancerJerry\\FreelancerJerry.csproj",
+        "projectUniqueName": "C:\\Users\\Niel\\source\\vsc\\Freelancer\\FreelancerJerry.csproj",
         "projectName": "FreelancerJerry",
-        "projectPath": "C:\\Users\\Niel\\source\\vsc\\FreelancerJerry\\FreelancerJerry.csproj",
+        "projectPath": "C:\\Users\\Niel\\source\\vsc\\Freelancer\\FreelancerJerry.csproj",
         "packagesPath": "C:\\Users\\Niel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Niel\\source\\vsc\\FreelancerJerry\\obj\\",
+        "outputPath": "C:\\Users\\Niel\\source\\vsc\\Freelancer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,18 +51,6 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[9.0.2, )"
-            },
-            "Microsoft.AspNetCore.Identity": {
-              "target": "Package",
-              "version": "[2.3.0, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[9.0.2, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.2, )"
