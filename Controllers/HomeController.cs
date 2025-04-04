@@ -23,6 +23,9 @@ public class HomeController : Controller
         if(work){
             System.Console.WriteLine("Server working");
         }
+        else {
+            System.Console.WriteLine("Server not connected!");
+        }
         return View();
     }
 

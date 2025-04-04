@@ -12,12 +12,21 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FreelancerjerrydbContext>(options => 
     options.UseSqlServer(Environment.GetEnvironmentVariable("freelancerjerrydbconnectionstring")));
 
+builder.Services.AddSession(options => 
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 //dependency injection??
 builder.Services.AddScoped<IFreelancerRepository, FreelancerRepository>();
 //dependency injection.
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+builder.Services.AddScoped<IListingRepository, ListingRepository>();
 
 var app = builder.Build();
 
@@ -29,6 +38,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseRouting();
 
