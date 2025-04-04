@@ -6,9 +6,9 @@ namespace FreelancerJerry.Models;
 
 public partial class FreelancerjerrydbContext : DbContext
 {
-    // public FreelancerjerrydbContext()
-    // {
-    // }
+    public FreelancerjerrydbContext()
+    {
+    }
 
     public FreelancerjerrydbContext(DbContextOptions<FreelancerjerrydbContext> options)
         : base(options)
@@ -21,9 +21,15 @@ public partial class FreelancerjerrydbContext : DbContext
 
     public virtual DbSet<Freelancer> Freelancers { get; set; }
 
+    public virtual DbSet<Listing> Listings { get; set; }
+
     public virtual DbSet<Payment> Payments { get; set; }
 
     public virtual DbSet<Review> Reviews { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(localDb)\\MSSQLLocalDb;Database=freelancerjerrydb;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -78,10 +84,10 @@ public partial class FreelancerjerrydbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("last_name");
-            entity.Property(e => e.Password_Hash)
-            .HasMaxLength(100)
-            .IsUnicode(false)
-            .HasColumnName("password_hash");
+            entity.Property(e => e.PasswordHash)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("password_hash");
         });
 
         modelBuilder.Entity<Freelancer>(entity =>
@@ -113,6 +119,31 @@ public partial class FreelancerjerrydbContext : DbContext
                 .HasMaxLength(13)
                 .IsUnicode(false)
                 .HasColumnName("phone_number");
+        });
+
+        modelBuilder.Entity<Listing>(entity =>
+        {
+            entity.HasKey(e => e.ListingId).HasName("PK__LISTING__89D81774E8F0EE96");
+
+            entity.ToTable("LISTING");
+
+            entity.Property(e => e.ListingId)
+                .ValueGeneratedNever()
+                .HasColumnName("listing_id");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.Description)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("description");
+            entity.Property(e => e.FreelancerId).HasColumnName("freelancer_id");
+            entity.Property(e => e.Title)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("title");
+
+            entity.HasOne(d => d.Freelancer).WithMany(p => p.Listings)
+                .HasForeignKey(d => d.FreelancerId)
+                .HasConstraintName("FK__LISTING__freelan__02FC7413");
         });
 
         modelBuilder.Entity<Payment>(entity =>
